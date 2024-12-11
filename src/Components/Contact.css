@@ -1,0 +1,107 @@
+
+ .ContactSection{
+   padding-top: 2rem;
+    width: 70%;
+    margin: 0 auto;
+ }
+ .ContactContent{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+ }
+ .contactContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 4rem 0;
+    column-gap: 2rem;
+ }
+ .ContactConnet{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+ }
+ .ContactTest{
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+ }
+ .ContactIcons{
+    display: flex;
+    column-gap: 0.5rem;
+ }
+ .ContactIcons ion-icon{
+    font-size: 1.5rem;
+    color: var(--title-color);
+ } 
+
+
+ /*form*/
+
+ .ContactFormDiv{
+    position: relative;
+    height: 4rem;
+    margin-bottom: 2rem;
+}
+.ContactFormInput{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--text-color);
+    background: none;
+    color: var(--title-color);
+    outline: none;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+.ContactFormTag{
+    position: absolute;
+    top: -0.75rem;
+    left: 1.25rem;
+    font-size: var(--smaller-font-size);
+    padding: 0.25rem;
+    background-color: var(--body-color);
+    z-index: 1;
+}
+.ContactFormDiv textarea{
+    resize: none;
+    overflow: hidden;
+}
+.SubmitButton{
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    background-color: var(--title-color-dark);
+    color: var(--button-color);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.SubmitButton:hover{
+    filter: drop-shadow(0 2px 8px var(--title-color));
+}
+
+/*small devices*/
+@media screen and (max-width:350px) {
+    .contactContainer{
+        grid-template-columns: 1fr;
+        padding: 2rem 0;
+        row-gap: 2rem;
+     }  
+}
+/*tabs*/
+@media screen and (max-width:567px) {
+    .contactContainer{
+        grid-template-columns: 1fr;
+        padding: 2rem 0;
+        row-gap: 2rem;
+     } 
+}
+@media screen and (max-width:768px){
+    .contactContainer{
+        grid-template-columns: 1fr;
+        padding: 2rem 0;
+        row-gap: 2rem;
+     } 
+}

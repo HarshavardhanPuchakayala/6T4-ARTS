@@ -1,0 +1,21 @@
+footer{
+    background-color: rgb(31, 30, 30);
+    width: 100%;
+    margin: 0;
+    height: 20vh;
+}
+.footerSocialIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0 0 0;
+}
+footer ion-icon{
+    font-size: 1.5rem;
+    color: white;
+}
+footer ion-icon:hover{
+    filter: drop-shadow(0 2px 8px white);
+}
+
