@@ -1,0 +1,7 @@
+.HeaderSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 3rem auto;
+}

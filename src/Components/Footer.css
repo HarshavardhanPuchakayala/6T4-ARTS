@@ -4,18 +4,23 @@ footer{
     margin: 0;
     height: 20vh;
 }
+footer h1{
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 1.5rem;
+}
 .footerSocialIcons{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    padding: 2rem 0 0 0;
+    padding: 1rem 0 0 0;
 }
-footer ion-icon{
-    font-size: 1.5rem;
+footer .icons{
+    font-size: 2rem;
     color: white;
 }
-footer ion-icon:hover{
+footer .icons:hover{
     filter: drop-shadow(0 2px 8px white);
 }
 

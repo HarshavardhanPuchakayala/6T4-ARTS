@@ -42,7 +42,7 @@ export default function Projects() {
                   >
                     <img src={img} alt={title} className="ProjectImg" />
                   </div>
-                  <h3 className="ProjectTitle">{title}</h3>
+                  {/* <h3 className="ProjectTitle">{title}</h3> */}
                 </div>
               );
             })}

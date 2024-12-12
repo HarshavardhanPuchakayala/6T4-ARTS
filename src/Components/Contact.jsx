@@ -1,43 +1,74 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import emailjs from '@emailjs/browser';
 import './Contact.css'
 export default function Contact() {
-    const [user,setUser]=useState(
-        {
-            name:"",
-            email:"",
-            message:""
-        }  
-    )
-    const Toast = ()=>{
-        toast.success("Message Send Successfully..!!")
-    }
-    const FormData=(e)=>{
-        const {name,value}=e.target;
-        setUser({...user,[name]: value});
-    }
-const FirebaseExport =async (e)=>{
-    e.preventDefault();
-    const {name,email,message}=user;
-    const res = await fetch("https://portfolio-b4797-default-rtdb.asia-southeast1.firebasedatabase.app/userData.json",{
-        method: "POST",
-        headers:{
-            "Content-Type":"application/json",
-        },
-        body:JSON.stringify({
-            name,
-            email,
-            message,
-        }),
-    })
-    setUser({
-        name:"",
-        email:"",
-        message:""
-    })
-    Toast()
-}
+    const forms = useRef();
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      message: ''
+    });
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    };
+  
+  
+    const validateForm = () => {
+      const { name, email, message } = formData;
+      if (!name || !email || !message) {
+        toast.error("All fields are required!");
+        return false;
+      }
+      return true;
+    };
+  
+  
+  
+    const sendResponseEmail = () => {
+      const responseParams = {
+        to_name: formData.name,
+        to_email: formData.email
+      };
+  
+      emailjs.send('', '', responseParams, "")
+        .then(() => {
+          toast.success('A Response email  will be sent to your mail successfully!');
+        }, (error) => {
+          console.error( error.text);
+        });
+    };
+  
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      
+      if (!validateForm()) return;
+  
+  
+     
+      emailjs.sendForm('', '', forms.current, "")
+        .then(() => {
+        
+         toast.success("Message sent successfully!");
+          sendResponseEmail();
+          
+          
+          setFormData({
+            name: '',
+            email: '',
+            message: ''
+          });
+        })
+        .catch((error) => {
+          toast.error("Failed to send message. Please try again.");
+          console.error("Main email error:",  error.text || error);
+        });
+  };
+  
   
   return (
     <section className="ContactSection" id='Contact'>
@@ -49,36 +80,41 @@ const FirebaseExport =async (e)=>{
 
           <div className='ContactConnet'>
                 <h1 className="ContactHeading">Let's Connect</h1>
-                <p className="ContactTest">I'm currently seeking new opportunities, and my inbox is always open! Whether you have a question or just want to say hello, I'll do my best to get back to you promptly.</p>
-                <div className="ContactIcons">
-                    <a href="https://www.linkedin.com/in/harshavardhan-puchakayala/" target='_blank'>
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                    </a>
-
-                    <a href="https://github.com/HarshavardhanPuchakayala"  target='_blank'>
-                    <ion-icon name="logo-github"></ion-icon>
-                    </a>
-                </div>
+                <p className="ContactTest">If you need any artistic work, feel free to reach out! I'm here to bring your creative visions to life and deliver exceptional artwork.</p>
+     
           </div>
            
             <div className="ContactContentForm">
-                <form action="" className="ContactForm">
+                <form ref={forms} onSubmit={handleSubmit} className="ContactForm">
 
                 <div className="ContactFormDiv">
                         <label htmlFor="" className="ContactFormTag">Name</label>
-                        <input type="text" name='name'  className='ContactFormInput' value={user.name} placeholder='Enter your name' required onChange={FormData}/>
+                        <input type="text" name='name'  className='ContactFormInput'
+                          value={formData.name} placeholder='Enter your name' required 
+                          onChange={handleChange}/>
                     </div>
 
                     <div className="ContactFormDiv">
                         <label htmlFor="" className="ContactFormTag">E-Mail</label>
-                        <input type="email" name='email' className='ContactFormInput'value={user.email} placeholder='Enter your email' required  onChange={FormData}/>
+                        <input type="email" 
+                        name='email' 
+                        className='ContactFormInput'
+                        value={formData.email}
+                         placeholder='Enter your email'
+                          required 
+                          onChange={handleChange}/>
                     </div>
 
                     <div className="ContactFormDiv">
                         <label htmlFor="" className="ContactFormTag">Message</label>
-                        <textarea name='message' className='ContactFormInput' value={user.message} placeholder="Let's talk about..." required  onChange={FormData}></textarea> 
+                        <textarea name='message' 
+                        className='ContactFormInput' 
+                        value={formData.message}
+                         placeholder="Let's talk about..." required  
+                         onChange={handleChange}
+                         rows="4"></textarea> 
                     </div>
-                    <button className='SubmitButton'  type='submit' onClick={FirebaseExport}>Send message</button>
+                    <button className='SubmitButton'  type='submit'>Send message</button>
                     <ToastContainer/>               
                 </form>
             </div>

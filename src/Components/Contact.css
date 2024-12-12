@@ -50,7 +50,7 @@
     height: 100%;
     border: 2px solid var(--text-color);
     background: none;
-    color: var(--title-color);
+    color: white;
     outline: none;
     border-radius: 0.75rem;
     padding: 1.5rem;
@@ -61,7 +61,7 @@
     left: 1.25rem;
     font-size: var(--smaller-font-size);
     padding: 0.25rem;
-    background-color: var(--body-color);
+    background-color: black;
     z-index: 1;
 }
 .ContactFormDiv textarea{
@@ -79,7 +79,10 @@
     border: none;
 }
 .SubmitButton:hover{
-    filter: drop-shadow(0 2px 8px var(--title-color));
+    /* filter: drop-shadow(0 2px 8px var(--title-color)); */
+    color: white;
+    background-color: black;
+    border: 1px solid white;
 }
 
 /*small devices*/

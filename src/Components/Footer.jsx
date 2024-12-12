@@ -1,20 +1,22 @@
-import React from 'react'
+import { FaFacebookSquare,FaYoutube } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 import './Footer.css'
 export default function Footer() {
   return (
     <>
     <footer className="footerSection">
+      <h1>Follow us</h1>
         <div className="footerSocialIcons">
           <a href=""  target='_blank'>
-        <ion-icon name="logo-instagram"></ion-icon>
+        <FaFacebookSquare className="icons"/>
         </a>
 
-        <a href="https://www.linkedin.com/in/harshavardhan-puchakayala/" target='_blank'>
-        <ion-icon name="logo-linkedin"></ion-icon>
+        <a href="" target='_blank'>
+        <AiFillInstagram className="icons"/>
         </a>
 
-        <a href="https://github.com/HarshavardhanPuchakayala"  target='_blank'>
-        <ion-icon name="logo-github"></ion-icon>
+        <a href=""  target='_blank'>
+        <FaYoutube className="icons"/>
         </a>
         </div>
     </footer>
